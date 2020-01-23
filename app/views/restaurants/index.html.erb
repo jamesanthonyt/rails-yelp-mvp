@@ -1,2 +1,24 @@
-<h1>Restaurants#index</h1>
-<p>Find me in app/views/restaurants/index.html.erb</p>
+<div>
+  <h1>Restaurants</h1>
+  <p> Here are all the restaurants in your city</p>
+  <div class="btn btn-primary">
+    <%= link_to 'Add a restaurant', new_restaurant_path %>
+  </div>
+</div>
+
+
+<div class="row mt-4">
+  <% @restaurants.each do |restaurant| %>
+    <div class="col-4">
+      <%= link_to restaurant_path(restaurant) do %>
+        <div class="card mb-4">
+          <img src=<%= "https://source.unsplash.com/800x600/?restaurant/#{rand(50)}" %> >
+          <div class="card-infos">
+            <h2><%= restaurant.name %></h2>
+            <p><%= restaurant.address %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

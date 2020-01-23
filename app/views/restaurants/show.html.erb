@@ -1,2 +1,25 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<div class="row"></div>
+  <div class="card-product mb-5">
+    <img src="https://source.unsplash.com/800x600/?restaurant" />
+    <div class="card-product-infos">
+      <h2><%= @restaurant.name %> | <%= @restaurant.category %></h2>
+      <p><%= @restaurant.address %></p>
+    </div>
+  </div>
+  <div class="btn btn-primary mb-3">
+    <%= link_to 'Add a review', new_restaurant_review_path(@restaurant) %>
+  </div>
+  <% @reviews.each do |review| %>
+    <div class="notification">
+      <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large" />
+      <div class="notification-content">
+        <p><small><%= Date.today %></small></p>
+        <p><%= review.content %></p>
+        <p>Rating: <%= ("<i class='fas fa-star'></i>" * review.rating).html_safe %></p>
+      </div>
+    </div>
+  <% end %>
+  <div class="btn btn-primary mb-3">
+    <%= link_to 'Back to all restaurants', restaurants_path %>
+  </div>
+</div>
